@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form method="POSTP">
+            <label for="name">Họ và tên: </label>
+            <input type="text" name="name" id="name" required/>
+            <div>
+                <label for="dob">Ngày sinh: </label>
+                <input type="datetime-local" name="dob" id="dob" required/>
+            </div>
+            <div>
+                <label>Giới tính: </label>
+                <label for="male">Nam</label>
+                <input type="radio" id="male" name="gender" value="male" required/>
+                <label for="female">Nữ</label>
+                <input type="radio" id="female" name="gender" value="female" required/>
+            </div>
+            <div>
+                <label for="phone">Số điện thoại: </label>
+                <input type="number" name="phone" id="phone" required/>
+            </div>
+            <div>
+                <label for="email">Email: </label>
+                <input type="email" name="email" id="email" required/>
+            </div>
+            <div>
+                <label for="company">Tên công ty: </label>
+                <input type="text" name="company" id="company" required/>
+            </div>
+            <div>
+                <label for="position">Vai trò trong công ty</label>
+                <select name="position">
+                    <option value="CEO">Giám đốc điều hành (CEO)</option>
+                </select>
+            </div>
+            <div>
+                <label for="size">Quy mô công ty</label>
+                <select name="size">
+                    <option value="smallsmall">Doanh nghiệp nhỏ</option>
+                </select>
+            </div>
+            <div>
+                <label for="job">Ngành nghề công ty: </label>
+                <input type="text" name="job" id="job" required/>
+            </div>
+            <div>
+                <label for="reason">Lý do tham gia câu lạc bộ: </label>
+                <textarea name="reason" cols="1" rows="3"></textarea>
+            </div>
+            <div>
+                <label for="experience">Kinh nghiệm lãnh đạo: </label>
+                <textarea name="experience" cols="1" rows="3"></textarea>
+            </div>
+            <div>
+                <label for="target">Mục tiêu khi tham gia câu lạc bộ: </label>
+                <textarea name="target" cols="1" rows="3"></textarea>
+            </div>
+            <div>
+                <label>Chương trình sự kiện mong muốn tham gia: </label>
+                <label for="communi">Networking</label>
+                <input type="checkbox" name="event" id="communi" value="communi"/>
+                <label for="self">Workshops</label>
+                <input type="checkbox" name="event" id="self" value="self"/>
+                <label for="meeting">Hội thảo</label>
+                <input type="checkbox" name="event" id="meeting" value="meeting"/>
+            </div>
+            <div>
+                <label>Đăng kí nhận bản tin: </label>
+                <label for="accept">Có</label>
+                <input type="checkbox" name="ask" id="accept" value="accept" required/>
+            </div>
+            <div>
+                <button>Đăng kí hội viên</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

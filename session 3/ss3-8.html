@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form method="POST">
+            <label for="name">Họ và tên: </label>
+            <input type="text" name="name" id="name" required/>
+            <div>
+                <label for="email">Email: </label>
+                <input type="email" name="email" id="email" required/>
+            </div>
+            <div>
+                <label for="time">Ngày sinh: </label>
+                <input type="datetime-local" name="time" id="time" required/>
+            </div>
+            <div>
+                <label>Giới tính: </label>
+                <label for="male">Nam</label>
+                <input type="radio" id="male" name="gender" value="male" required/>
+                <label for="female">Nữ</label>
+                <input type="radio" id="female" name="gender" value="female" required/>
+            </div>
+            <div>
+                <label for="ID">Số CCCD: </label>
+                <input type="number" name="ID" id="ID" required/>
+            </div>
+            <div>
+                <label for="date">Ngày cấp: </label>
+                <input type="datetime-local" name="date" id="date" required/>
+            </div>
+            <div>
+                <label for="level">Nơi cấp: </label>
+                <input type="text" name="level" id="level" required/>
+            </div>
+            <div>
+                <label for="phone">Số điện thoại: </label>
+                <input type="number" name="phone" id="phone" required/>
+            </div>
+            <div>
+                <label for="email">Email: </label>
+                <input type="email" name="email" id="email" required/>
+            </div>
+            <div>
+                <label for="addressnow">Địa chỉ thường trú: </label>
+                <textarea name="addressnow" cols="1" rows="3"></textarea>
+            </div>
+            <div>
+                <label for="permanent">Địa chỉ tạm trú: </label>
+                <textarea name="permanent" cols="1" rows="3"></textarea>
+            </div>
+            <div>
+                <label>Loại CCCD: </label>
+                <label for="new">CCCD mới</label>
+                <input type="radio" id="new" name="type" value="new" required/>
+                <label for="old">CCCD cũ</label>
+                <input type="radio" id="old" name="type" value="old" required/>
+            </div>
+            <div>
+                <label for="nation">Dân tộc: </label>
+                <input type="text" name="nation" id="nation" required/>
+            </div>
+            <div>
+                <label for="religion">Tôn giáo: </label>
+                <input type="text" name="religion" id="religion" required/>
+            </div>
+            <div>
+                <label for="country">Quốc tịch: </label>
+                <input type="text" name="country" id="country" value="Việt Nam"/>
+            </div>
+            <div>
+                <label for="parent">Họ tên cha/mẹ: </label>
+                <input type="text" name="parent" id="parent" required/>
+            </div>
+            <div>
+                <label for="parentID">Số CCCD của cha/mẹ: </label>
+                <input type="number" name="parentID" id="parentID" required/>
+            </div>
+            <div>
+                <label for="city">Tỉnh/Thành phố: </label>
+                <select name="city">
+                    <option value="">Chọn Tỉnh/Thành phố</option>
+                </select>
+            <div>
+                <button>Gửi thông tin</button>
+            </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

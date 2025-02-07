@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form method="POST">
+            <label for="name">Họ và tên: </label>
+            <input type="text" name="name" id="name" required/>
+            <div>
+                <label for="dob">Ngày sinh: </label>
+                <input type="datetime-local" name="dob" id="dob" required/>
+            </div>
+            <div>
+                <label>Giới tính: </label>
+                <label for="male">Nam</label>
+                <input type="radio" id="male" name="gender" value="male" required/>
+                <label for="female">Nữ</label>
+                <input type="radio" id="female" name="gender" value="female" required/>
+            </div>
+            <div>
+                <label for="phone">Số điện thoại: </label>
+                <input type="number" name="phone" id="phone" required/>
+            </div>
+            <div>
+                <label for="email">Email: </label>
+                <input type="email" name="email" id="email" required/>
+            </div>
+            <div>
+                <label for="address">Địa chỉ: </label>
+                <textarea name="address" cols="1" rows="3"></textarea>
+            </div>
+            <div>
+                <label for="hobby">Sở thích: </label>
+                <input type="text" name="hobby" id="hobby"/ required>
+            </div>
+            <div>
+                <label for="skill">Kĩ năng: </label>
+                <textarea name="skill" cols="1" rows="3"></textarea>
+            </div>
+            <div>
+                <label>Thời gian rảnh: </label>
+                <label for="morning">Sáng</label>
+                <input type="checkbox" name="time" id="morning" value="morning"/>
+                <label for="afternoon">Chiều</label>
+                <input type="checkbox" name="time" id="afternoon" value="afternoon"/>
+                <label for="evening">Tối</label>
+                <input type="checkbox" name="time" id="evening" value="evening"/>
+            </div>
+            <div>
+                <label for="reason">Lí do tham gia nhóm: </label>
+                <textarea name="reason" cols="1" rows="3"></textarea>
+            </div>
+            <div>
+                <label for="color">Màu yêu thích</label>
+                <input type="color" name="color" id="color" value="#000000"/>
+            </div>
+            <div>
+                <label>Đăng kí nhận bản tin: </label>
+                <label for="accept">Có</label>
+                <input type="checkbox" name="ask" id="accept" value="accept" required/>
+            </div>
+            <div>
+                <label>Nhận thông báo qua: </label>
+                <label for="email">Email</label>
+                <input type="radio" name="noti" id="email" value="email" required/>
+                <label for="sms">SMS</label>
+                <input type="radio" name="noti" id="sms" value="sms" required/>
+            </div>
+            <div>
+                <button>Đăng kí thành viên</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
