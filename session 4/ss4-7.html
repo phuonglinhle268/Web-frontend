@@ -6,28 +6,25 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <form action="#" method="POST">
-            <label for="firstname">First Name</label>
-            <input type="text" name="firstname" id="firstname" placeholder="Your name..."/>
-            <div>
-                <label for="lastname">Last Name</label>
-                <input type="text" name="lastname" id="lastname" placeholder="Your last name..."/>
-            </div>
-            <div>
-                <label for="country">Country</label>
-                <select>
-                    <option value="US">USA</option>
-                </select>
-            </div>
-            <div>
-                <label for="cmt">Subject</label>
-                <textarea name="cmt" id="cmt" placeholder="Write something..."></textarea>
-            </div>
-            <div>
-                <button>Submit</button>
-            </div>
-        </form>
-    </div>
+    <h1>Tìm kiếm sản phẩm</h1>
+    <table border="0" cellspacing="">
+        <tr>
+            <td><label for="search">Từ khóa tìm kiếm: </label></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="search" id="search"/></td>
+        </tr>
+        <tr>
+            <td><label for="type">Loại sản phẩm: </label></td>
+        </tr>
+        <tr>
+            <td><select>
+                <option value="đt">Điện tử</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td><button>Tìm kiếm</button></td>
+        </tr>
+    </table>
 </body>
 </html>
