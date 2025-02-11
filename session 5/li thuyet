@@ -1,0 +1,41 @@
+https://specificity.keegan.st/ : compare prioration
+
+
+Inline CSS (thông qua style = "property (thuộc tính):value;")
+
+
+Nằm càng dưới có chức vụ ưu tiên cao hơn: Inline -> Internal và External !important(special, override lại tất cả)
+Casscading có t/c ghi đè
+
+
+khi viết style bên ngoài:
+    +Gọi tên thẻ cần sửa
+    + Ko trong thẻ style phải gọi link css sheet bên ngoài
+
+
+universal selcector: dau *, chon tat ca, han che dung
+Id: 
+- cach thuc dat ma dinh danh cho ptu HTML
+- phải có dấu # đằng trc,
+- luôn độc nhất
+class: nhóm đối tượng chung t/c
+- Bo chon thẻ html để tạo kiểu
+- Có dấu . đằng trc
+- nhóm thẻ html dùng chung 1 bộ thuộc tính
+
+
+Bộ thuộc tính tạo kiểu chữ
+font-size
+font-weight
+text-decoration...
+->tạo sẵn file class trong css, cho class vào từng thẻ mong muốn
+
+
+Descendant Selector (liên kết cha con)
+parent child {property: value;}
+
+
+Trong bo chon: id (#) has higher prority than class(.)
+-> should choose one and use in the whole process (don't have to remember)
+   first choice now: CLASS
+

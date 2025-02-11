@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+}
+table {
+    border-collapse: collapse;
+    width: 800px;
+    border-bottom: 1px solid #ddd;
+}
+td {
+    vertical-align: top;
+}
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+.source {
+    font-weight: bold;
+    color: rgb(67, 67, 202);
+}
+.time {
+    font-weight: bold;
+    color: grey;
+}
+.description {
+    color: rgb(90, 87, 87);
+}

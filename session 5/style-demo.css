@@ -1,0 +1,41 @@
+ul {
+    background-color:aquamarine;
+}
+ul {
+    background-color: purple;
+}
+h1 {
+    background-color: red !important;
+}
+li {
+    color: white;
+}
+*{
+    font-size:medium;
+} 
+#second-li{
+    color: black;
+    background-color: pink;
+}
+.demo-class{
+    color: yellow;
+    background-color: black;
+}
+.text-transform{
+    font-size: large;
+    font-weight:bold;
+    text-align: center;
+    text-decoration:underline;
+}
+.first-content p {
+    background-color:brown;
+}
+#second-content {
+    background-color: red;
+}
+.second-content {
+    background-color: blue;
+}
+.style{
+    text-align:center;
+}

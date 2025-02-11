@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+}
+.code-box pre {
+    white-space: pre; /* Giữ nguyên định dạng code */
+}
+
+.para {
+    text-indent: 20px;
+}
+.all{
+    background-color: rgb(217, 192, 145);
+    border-left: 15px solid rgb(151, 104, 16); 
+    padding-left:50px; 
+    font-family: "Courier New", monospace;
+    line-height: 2;
+}

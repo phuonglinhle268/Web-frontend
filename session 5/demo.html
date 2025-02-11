@@ -1,0 +1,34 @@
+<!--Nằm càng dưới có chức vụ ưu tiên cao hơn: Inline -> Internal và External !important(special, override lại tất cả)
+Casscading có t/c ghi đè
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <style>
+        div {
+            background-color: blue;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h1 class="text-transform" style="background-color: yellow;">CSS - CascadingStykeSheet</h1>
+    <div class="text-transform">Internal CSS</div>
+    <ul>
+        <li class="text-transform">External CSS - Li 01</li>
+        <li id="second-li">External CSS - Li 02</li>
+        <li class="demo-class">External CSS - Li 03</li>
+    </ul>
+    <section class="first-content"> Phần Nội dung 1
+        <h1>Helloworld</h1>
+        <p>Ljnrjknsnsernresln</p>
+    </section>
+    <section id="second-content" class="second-content"> Phần Nội dung 2
+        <p>njksvkesbfiewnvgesnvesw</p>
+    </section>
+</body>
+</html>

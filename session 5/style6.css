@@ -1,0 +1,14 @@
+
+.example {
+    background-color: rgb(235, 229, 229);
+    font-family: monospace;
+    white-space: pre;
+}
+
+.button {
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
