@@ -1,0 +1,40 @@
+*{
+    font-family: "Roboto";
+    font-size: 20px;
+    text-align: center;
+}
+.ex7 .head{
+    color:rgb(255, 255, 255);
+    background-color: rgb(2, 123, 255);
+}
+.ex7 .first{
+    color:rgb(34, 33, 33);
+    background-color: rgb(242, 242, 242);
+    padding: 18px;
+}
+.ex7 .second{
+    color:rgb(34, 33, 33);
+    background-color: rgb(255, 255, 255);
+    padding: 18px;
+}
+.ex7 .button{
+    font-size:16px;
+}
+.ex7 .one{
+    background-color: rgb(40, 167, 69);
+    color: white;
+    text-align: center;
+    border:none;
+}
+.ex7 .two{
+    background-color: rgb(255, 193, 9);
+    color: black;
+    text-align: center;
+    border:none;
+}
+.ex7 .three{
+    background-color: rgb(220, 53, 69);
+    color: white;
+    text-align: center;
+    border:none;
+}

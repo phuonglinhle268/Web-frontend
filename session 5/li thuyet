@@ -37,5 +37,8 @@ parent child {property: value;}
 
 Trong bo chon: id (#) has higher prority than class(.)
 -> should choose one and use in the whole process (don't have to remember)
-   first choice now: CLASS
+   first choice now: class
+
+Google font: copy link html (the first) on "gg font"
+Paste on "head", before the link to css sheet
 

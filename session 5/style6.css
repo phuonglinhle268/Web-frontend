@@ -1,14 +1,33 @@
-
-.example {
-    background-color: rgb(235, 229, 229);
-    font-family: monospace;
-    white-space: pre;
+*{
+    font-family: "Roboto";
+    font-size: 14px;
+    color: rgb(24, 23, 23);
 }
+.ex6 h3{
+    font-size: 40px;
 
-.button {
-    background-color: green;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+}
+.ex6 .syntax{
+    background-color: #f5f5f5;
+    color: rgb(171, 25, 25)
+}
+.ex6 .demo-figure{
     text-align: center;
+    border: 3px solid green;
+    line-height: 4;
+    margin-bottom: 20px;
+}
+.ex6 .example-container{
+    background-color: aliceblue;
+    padding: 10px;
+}
+.ex6 .example-container h4{
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.ex6 .demo-code{
+    background-color: white;
+    border-left: 3px solid green;
+    padding: 20px;
 }
