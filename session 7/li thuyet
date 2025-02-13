@@ -1,0 +1,25 @@
+căn chỉnh content : width, height -> thiết lập chỉ cho phần ND
+căn từ content -> viền : padding
+căn chỉnh độ dày viền: border
+căn từ viền đến các nd xquanh ngoài: margin
+
+box-sizing
++ border-box: thu hẹp box lại bằng tổng width/height -> thiết lập cho tổng thể
++ content-box: giữ nguyên các thông số cố định
+
+phải cố định ngay từ đầu:
++ box-sizing: border-box
++ margin: 0
++ padding: 0
+
+thẻ inline ko nhận thuộc tính:
+- margin top/ bottom
+- width, height
+
+border-radious: phải để width = height -> mới đc bo tròn
+
+position
+- absolute: lấy trình duyệt làm mốc, căn chỉnh theo phần trình duyệt
+- relative: căn chỉnh các thuộc tính theo từng đôi (top/bottom-left/right)
++ top: cách trên (đẩy xuống)
++ left: cách trái (đẩy sang phải)
