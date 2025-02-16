@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.ex4{
+    margin: 20px;
+}
+.title p{
+    border-bottom: 4px solid red;
+    font-size: 18px;
+    display: inline-block; 
+    padding-bottom: 10px;
+}
+.text {
+    gap: 30px;
+    padding-top: 1cm;
+    display: flex;
+    align-items: center;
+}
+.contain {
+    width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 20PX;
+}
+.account {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid black;
+}
+
+.account i {
+    font-size: 100px; 
+    display: flex;
+    padding-right: 20px;
+}
+

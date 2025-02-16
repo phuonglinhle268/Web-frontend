@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.search {
+    padding: 0.3cm;
+    margin: 1cm;
+    border: 1px solid black;
+    border-radius: 50px;
+    background-color: white;
+    width: 11cm;
+}
+input {
+    border: 1px none black;
+}
+#img {
+    position: relative;
+    left: 4cm;
+}
+#phone {
+    position: relative;
+    left: 4cm;
+}

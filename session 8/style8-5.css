@@ -1,0 +1,49 @@
+.first{
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;
+}
+.title {
+    opacity: 0.5; 
+}
+.distance {
+    opacity: 0.5;
+}
+.link{
+    opacity: 1;
+}
+.download{
+    color: white;
+    background-color: rgb(34, 34, 88);
+    border-radius: 3px;
+    border: none;
+    width: 120px;
+    height:30px;
+    margin: 10px;
+    opacity: 0.7;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.information {
+    color: black;
+    background-color: white;
+    font-size: px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 3px;
+    border:1px solid rgb(203, 200, 200);
+    width: 120px;
+    height:30px;
+    margin: 10px;
+    opacity: 0.8;
+}
+
+.bottom{
+    background-color: rgb(154, 151, 147);
+   text-align: center;
+   opacity: 0.5;
+   height: 200px;
+   padding: 30px;
+}
+i{
+    font-size: 20px;
+    margin-right: 20px;
+}

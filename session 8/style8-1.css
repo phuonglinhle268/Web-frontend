@@ -1,0 +1,41 @@
+table{
+    border-color: rgb(190, 190, 190);
+    margin:0;
+    padding: 0;
+}
+span{
+    text-align: center;
+    padding: 15px;
+    margin: 20px;
+    background-color:#ffffff;   
+    display: inline-block;
+}
+.date{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10px;
+    color:rgb(85, 84, 84);
+}
+.title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+}
+.photo{
+    width: 150;
+    height:100;
+}
+.text{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13px;
+    color:rgb(85, 84, 84);
+}
+.more-info{
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+   text-transform: uppercase;
+   color:black;
+   background-color: rgba(255, 255, 255, 0);
+   border-radius: 5px;
+   font-size: 8px;
+}
