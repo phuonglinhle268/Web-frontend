@@ -1,0 +1,39 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+.container{
+    flex-direction: column;
+    height: 100px; 
+    width: 600px;
+    align-items:baseline;
+}
+.container .up{
+    display: flex;
+}
+.container .down{
+    display: flex;
+    justify-content:space-between
+}
+.container span{
+    border: 3px solid;
+    border-radius: 9px;
+    color: white;
+    background-color:#800080;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    align-items: center;
+}
+.down span{
+    border: 3px solid;
+    border-radius: 9px;
+    color: white;
+    background-color:#800080;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}

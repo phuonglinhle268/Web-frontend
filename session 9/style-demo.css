@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin:0;
+}
+.container{
+    background-color:pink;
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+    height: 600px;
+    align-items: baseline;
+    flex-wrap:wrap;
+    gap: 50px;
+}
+.container .child{
+    background-color: hotpink;
+    width: 200px;
+    height: 200px;
+    color: white;
+    text-align: center;
+    line-height: 200px;
+    border: 10px solid white;
+}
+.container .child:nth-child(2){
+    font-size:4px;
+    align-self: flex-end;
+}
+.container .child:nth-child(4){
+    font-size:10px;
+}

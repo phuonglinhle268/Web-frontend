@@ -1,0 +1,49 @@
+display: flex
+-> bắt buộc phải có cho div tổng bao gồm các thẻ div con muốn sửa bên trong
+   trục chính: từ trái qua phải, trên xuống
+
+flex-direction:
+  - row: hướng mặc định (ko thay đổi, từ trái qua)
+  - row-reverse: quay từ phải sang (ngược lại)
+  - column: từ trên xuống
+  - column-reverse: bẻ ngược lại
+
+justfied-content: căn theo chiều flex-direction
+- flex-start: dồn theo hướng BẮT ĐẦU của trục chính
+- flex-end: dồn qua hướng KẾT THÚC
+- center: đẩy các phần tử con ra giữa
+- space-around: cách đều vị trị các ptu, 2 lề bằng 1/2 k/c bên trong
+- space-evenly: tất cả các k/c bằng nhau
+- space-between: 2 ptu đầu sẽ dính chặt luôn vào 2 lề
+
+align-item: 
+- chỉnh toàn bộ các phần tử
+- căn theo chiều từ trên xuống
+- baseline: căn chỉnh ND trong từng ptu luôn nằm trên đg kẻ (giữa)
+
+flex-wrap: khi ko còn đủ khoảng trống -> đẩy
+- wrap: đẩy xuống dưới
+- nowrap: đẩy lên trên (các ptu con đang ở xuống dưới cùng)
+
+gap: tạo khoảng trống giữa các ptu
+
+align-self:
+- căn chỉnh riêng từng phần tử
+- theo chiều vuông góc với trục chính
+
+order: 
+- sắp xếp vị trí các ptu
+- càng cao, càng đẩy về cuối (10: max)
+
+flex-grow:numer
+- container còn khoảng trống -> lấp đầy
+-> sự nở ra, chiểm nhiều khoảng trống hơn
+
+flex-shrink:number
+- container ko còn khoảng trống
+- ptu thu nhỏ lại cho vừa container
+- ptu đc áp dụng sẽ thu nhỏ đầu tiên
+- number: tốc độ thu nhỏ
+
+flex-basis
+- thiết lập kích thước của 1 ptu con theo mong muốn
