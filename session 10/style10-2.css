@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+.ex2{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 20px;
+    width: 800px;
+}
+.container .subject{
+    background-color: #777879;
+    background: linear-gradient(180deg, rgb(17, 17, 17) 50%, rgb(197, 196, 196));
+    background-clip:text;
+    color:transparent;
+    border-radius: 3px;
+    width: 200px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;;
+}
+.container .photo2{
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+.container .photo4{
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+.container .photo1{
+    margin-top: 20px;
+    border-radius: 3px;
+}
+.container .photo3{
+    margin-top: 20px;
+    border-radius: 3px;
+}

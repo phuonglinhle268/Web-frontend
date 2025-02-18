@@ -1,0 +1,55 @@
+*{
+    font-family:Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 700px;
+    position: relative;
+    margin: 10px;
+}
+.first-look img{
+    width: 100%;
+}
+.subject-name{
+    padding: 20px;
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0);
+    border: 1px solid white;
+    color:white;
+}
+.first-look .text{
+    color: white;
+    position: absolute;
+    top: 410px;
+    left: 10px;
+    margin: 5px;
+}
+.first-look .text p{
+    font-size: 15px;
+}
+
+.menu{
+    width: 76%;
+    background-color:#f1f3f7 ;
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+}
+.menu button:hover{
+    background-color: black;
+    color: white;
+}
+.menu p{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    text-align: center;
+}
+.menu p:hover{
+    background-color: rgb(26, 23, 23);
+    color: white;
+}

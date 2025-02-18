@@ -1,0 +1,37 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    color: white;
+    font-size: 16px;
+    font-family:"Open Sans";
+}
+.container{
+    margin-bottom: 20px;
+}
+.container:nth-of-type(1) .child{
+    background-color: pink;
+}
+.row{
+    display:flex;
+    justify-content: center;
+    gap:20px;
+}
+.row .child{
+    background-color: pink;
+    width: calc(33.333% - 20px);
+}
+.blog-container{
+    height: 200px;
+    background-image: url(../assets/img5.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+}
+.blog-container .title{
+    position: absolute;
+    bottom:0;
+    left:0;
+
+}
