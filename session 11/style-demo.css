@@ -1,0 +1,38 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-size: 26px;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    background-color: pink;
+    gap: 20px;
+}
+.child{
+    width: 25%;
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    background-color: hotpink;
+    color: rgb(35, 35, 35);
+    border: 1px solid white;
+}
+@media screen and (max-width:1024px){
+    .container{
+        flex-wrap: wrap;
+    }
+    .child{
+        width: calc(50% - 20px);
+    }
+}
+@media screen and (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+    .child {
+      width: 100%;
+    }
+  }
+

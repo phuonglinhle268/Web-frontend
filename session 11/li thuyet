@@ -1,0 +1,7 @@
+480px - 768px - 1024px - 1200px
+điện thoại -> tablet khổ dọc -> tablet khổ ngang -> laptop, máy tính
+
+- Desktop first: max-width
+-> từ to thu nhỏ dần vào (ưu tiên hơn)
+- Mobile first: min-width
+-> chủ động thu nhỏ trước, rồi phóng to
