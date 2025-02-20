@@ -1,0 +1,86 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-size:45px;
+    color:rgb(24, 19, 19);
+}
+header nav{
+    background-color: #5995db ;
+    height:50px;
+}
+header div{
+    background-color: #b2d6ff ;
+    height:300px;
+    text-align: center;
+    line-height: 300px;
+}
+main div.feature:nth-of-type(1){
+    background-color:#f5cf8d ;
+}
+main div.feature:nth-of-type(2){
+    background-color:#c8c6fa;
+}
+main div.feature:nth-of-type(3){
+    background-color:#f09a9d ;
+}
+main div.sign-up{
+    background-color: #d7e9fe ;
+}
+main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+main .feature{
+    width:33.33%;
+    height:400px;
+    line-height: 400px;
+    text-align: center;
+}
+main .sign-up{
+    width:100%;
+    text-align: center;
+    line-height:100px;
+}
+.content-section{
+    background-color:#ebedf0 ;
+    height:300px;
+    text-align: center;
+    line-height: 300px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (max-width:1200px){
+    .header{
+        order:1;
+    }
+    .content-section{
+        order:2;
+    }
+    main{
+        order:3;
+    }
+    main .sign-up{
+        order:1;
+        width:50%;
+        height: 300px;
+        line-height:300px;
+    }
+    main .feature{
+        order:2;
+        width:50%;
+        height: 300px;
+        line-height:300px;
+    }
+}
+@media screen and (max-width:768px){
+    main{
+        flex-direction: column;
+    }
+    main > *{
+        width:100% !important;
+    }
+}

@@ -82,7 +82,7 @@
         width: 100%;
     }
     .container3 div{
-        width: 49.47%;
+        width: calc(50%-20px);
     }
 }
 @media screen and (max-width:768px) {
@@ -94,6 +94,10 @@
     }
     .container1 .row1 {
         width: 100%;
+    }
+    .container3{
+        flex-wrap: wrap;
+        flex-direction: column;
     }
     .container3 div{
         width: 100%;
