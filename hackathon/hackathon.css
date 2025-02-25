@@ -158,3 +158,23 @@ table{
     width: 50%;
    }
 }
+
+/*sua phan icon*/
+@media screen and (max-width:1024px){
+    .skill-section .row{
+        flex-wrap:wrap;
+        gap:25px;
+    }
+    .skill-section .row .col{
+        width:calc(25% -25px);
+    }
+}
+@media screen and (max-width:768x){
+    .skill-section .row .col{
+        width:calc(33.33% -25px);
+    }
+    .skill-section{
+        padding: 96px 40px;
+    }
+}
+

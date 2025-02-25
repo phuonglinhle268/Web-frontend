@@ -242,6 +242,7 @@ section .icon {
     }
     section .span {
         display: none;
+    
     }
     section button {
         font-size: 14px;
