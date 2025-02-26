@@ -1,0 +1,27 @@
+thẻ script: xuất hiện cuối phần body
+
+./ :trong cùng 1 thư mục (folder)
+../ : di chuyển ra ngoài 1 thư mục (folder khác)
+
+var:
+- gán lại gtri mới
+- khai báo lại gtri
+
+let:
+- gán gtri mới
+- ko thể khai báo lại gtri
+
+const:
+- ko thể gán, hay báo gtri mới -> ko thể thay đổi
+-> khai báo hằng số
+
+ko có gtri khởi tạo -> mặc định lưu trong biến: UNDEFINED
+
+dùng concat để nối chuỗi (ngắn, nên chỉ 2)
+
+trim: loại bỏ khoảng trắng đầu/cuối
+slice (index, number): cắt chuỗi
+
+console.log(): in ra trong thẻ tab console;
+alert: in ra trên hộp thoại thông báo;
+document.write: in ra trên cửa sổ trình duyệt;
