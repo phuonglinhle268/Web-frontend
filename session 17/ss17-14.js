@@ -1,0 +1,10 @@
+let radius = parseInt(prompt("Nhập bán kính"));
+let height = parseInt(prompt("Nhập chiều cao"));
+let surround = 2*Math.PI*radius*height;
+alert("Diện tích xung quanh hình trụ là: "+ Math.floor(surround));
+let area = 2*Math.PI*radius*(radius + height);
+alert("Diện tích toàn phần hình trụ là: " + Math.floor(area));
+let volume = Math.PI*Math.pow(radius, 2)*height;
+alert("Thể tích hình trụ là: " + Math.floor(volume));
+let base = 2*Math.PI*radius;
+alert("Chu vi đáy hình trụ là: " + Math.floor(base));
