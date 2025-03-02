@@ -1,0 +1,17 @@
+== : ss tương đối, chỉ gtri
+=== : ss tuyệt đối, cả kiểu dữ liệu + gtri  -> ưu tiên luôn sử dụng
+
+!= : khác tương đối -> luôn ngược với ss bên trên  -> không nên dùng
+!== : khác tuyệt đối
+
+&& : cả 2 vế phải có kết quả giống nhau (đều đúng)
+|| : chỉ cần 1 vế đúng  -> cả kết quả cùng đúng
+
+toán tử 3 ngôi:
+   đk ? đúng : sai;
+
+sự ưu tiên :
+  ! : mức ưu tiên cao nhất -> && -> ...-> || : thấp nhất
+
+switch (gtri can xét)
+case : các gtri/trg hợp có thể xra (ko phải theo thứ tự như C)
