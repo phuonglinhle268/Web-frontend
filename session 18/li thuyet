@@ -15,3 +15,5 @@ sự ưu tiên :
 
 switch (gtri can xét)
 case : các gtri/trg hợp có thể xra (ko phải theo thứ tự như C)
+
+NaN : not a number
