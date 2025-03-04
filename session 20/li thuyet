@@ -1,0 +1,8 @@
+for (innitialization (start value), condition, updation){...}
+- loop with knowing the times
+- chạy từng lần lặp
+* 2 vòng lặp lồng nhau 
+-> số lần lặp = tích
+
+while
+- ko biết số lần lặp
