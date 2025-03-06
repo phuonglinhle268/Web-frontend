@@ -1,0 +1,15 @@
+for...of
+-> duyệt qua toàn bộ mảng mà ko qtam chỉ số
+
+for..in
+-> lấy ra dãy chỉ số có trong mảng
+
+THÊM arr.(cú pháp)
+- unshift: đầu mảng
+- push : cuối mảng
+- splice : giữa    -> arr.splice(index, 0, gtri thêm);
+
+XÓA
+- shift: đầu mảng
+- pop : cuối mảng
+- splice: giữa     -> arr.splice(index, 1);
