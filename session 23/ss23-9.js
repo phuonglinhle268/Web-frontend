@@ -90,7 +90,11 @@ while (true) {
                     count++;
                 }
             }
+           if (count > 0){
             console.log(`Số ${a} xuất hiện ${count} lần.`);
+           } else{
+            console.log("Khong ton tai phan tu");
+           }
             break;
 
         case 7:
