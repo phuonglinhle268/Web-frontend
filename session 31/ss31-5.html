@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ss31-5.css">
+</head>
+<body>
+    <h1>Danh sách nhân viên</h1>
+    <table id="employeeList" cellspacing="5" >
+        <tr>
+            <th>STT</th>
+            <th>NAME</th>
+            <th>AGE</th>
+            <th>ADDRESS</th>
+        </tr>
+    </table>
+
+    <script>
+        const employees = [
+            { id: 1, name: 'John', age: 18, address: 'New York' },
+            { id: 2, name: 'Mike', age: 22, address: 'Canada' },
+            { id: 3, name: 'Linda', age: 19, address: 'California' },
+            { id: 4, name: 'Peter', age: 25, address: 'London' },
+            { id: 5, name: 'Tony', age: 17, address: 'New York' }
+        ];
+        let table = document.getElementById("employeeList");
+        for (let i = 0; i < employees.length; i++) {
+            let employee = employees[i];
+            let row = "<tr>" +
+                        "<td>" + employee.id + "</td>" +
+                        "<td>" + employee.name + "</td>" +
+                        "<td>" + employee.age + "</td>" +
+                        "<td>" + employee.address + "</td>" +
+                      "</tr>";
+            table.innerHTML += row;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ss31-3.css">
+</head>
+<body>
+    <h1>Click ô vuông để đổi màu nền</h1>
+    <div class="container">
+        <div class="box purple" onclick="changeColor(`purple`)"></div>
+        <div class="box blue"  onclick="changeColor(`blue`)"></div>
+        <div class="box red"  onclick="changeColor(`red`)"></div>
+        <div class="box green"  onclick="changeColor(`green`)"></div>
+        <div class="box yellow"  onclick="changeColor(`yellow`)"></div>
+    </div>
+    <p id="result">Màu nền hiện tại: Mặc định</p>
+
+    <script>
+        function changeColor(color){
+            document.body.style.backgroundColor = color
+        }
+    </script>
+</body>
+</html>

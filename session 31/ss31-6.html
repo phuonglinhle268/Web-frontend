@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ss31-6.css">
+</head>
+<body>
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password">
+
+        <button id="check-btn">Login</button>
+    </div>
+
+    <script>
+        let button = document.getElementById("check-btn");
+        button.onclick = function () {
+            let correctName = "huanrose@gmail.com";
+            let correctPass = "123456";
+
+            let inputName = document.getElementById("username").value;
+            let inputPass = document.getElementById("password").value; 
+            // value: lấy hoặc đặt giá trị của ô nhập liệu
+            //Dùng để đọc dữ liệu do người dùng nhập vào
+
+            if (inputName === correctName && inputPass === correctPass) {
+                console.log("Đăng nhập thành công");
+            } else {
+                console.log("Đăng nhập thất bại");
+            }
+        }
+    </script>
+</body>
+</html>

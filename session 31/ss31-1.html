@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <p id="text">This is a text</p>
+        <button id="hide_button">Hide text</button>
+        <button id="show_button">Show text</button>
+    
+    <script>
+        document.getElementById("hide_button").onclick = function() {
+        document.getElementById("text").style.display = "none"
+}
+    document.getElementById("show_button").onclick = function() {
+    document.getElementById("text").style.display = "flex"
+}
+    </script>
+</body>
+</html>

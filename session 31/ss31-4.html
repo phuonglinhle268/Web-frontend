@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ss31-4.css">
+</head>
+
+<body>
+    <h2>Modal Example</h2>
+    <button id="open-btn">Open Modal</button>
+    <div id="modal">
+        <div class="box">
+            <span id="close-btn">&times;</span>
+            <p>Some text in the Modal</p>
+        </div>
+    </div>
+
+    <script>
+        let modal = document.getElementById("modal");
+        let open = document.getElementById("open-btn");
+        let close = document.getElementById("close-btn");
+        open.onclick = function () {
+            modal.style.display = "flex";
+        };
+        close.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        modal.onclick = function (event) {
+            if (even.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+</body>
+
+</html>

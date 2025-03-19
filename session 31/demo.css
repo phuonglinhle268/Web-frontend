@@ -1,0 +1,7 @@
+.demo {
+    width: 150px;
+    height: 250px;
+    background-color: red;
+    color: white;
+    border: 10px solid black;
+}
