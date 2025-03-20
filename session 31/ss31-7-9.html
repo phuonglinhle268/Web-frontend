@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ss31-7.css">
+</head>
+
+<body>
+    <div id="myDIV" class="header">
+        <h2 style="margin: 5px">My To Do List</h2>
+        <input type="text" id="myInput" placeholder="Title..." />
+        <span class="addBtn">Add</span>
+    </div>
+
+    <ul id="myUL">
+        <!-- dữ liệu mẫu ko được sử dụng  -->
+        <li class="checked">Pay bills <span class="close">&times;</span></li>
+    </ul>
+
+    <script>
+        let todoList = [
+            {
+                id: 1,
+                task: "Hit the gym",
+                completed: false,
+            },
+            {
+                id: 2,
+                task: "Pay bills",
+                completed: true,
+            },
+            {
+                id: 3,
+                task: "Meet george",
+                completed: false,
+            },
+            {
+                id: 4,
+                task: "Buy eggs",
+                completed: false,
+            },
+            {
+                id: 5,
+                task: "Read a book",
+                completed: false,
+            },
+            {
+                id: 6,
+                task: "Organize office",
+                completed: false,
+            },
+        ];
+
+
+        function renderTodo() {
+            let list = document.getElementById("myUL");
+            list.innerHTML = ""; // Xóa danh sách cũ trước khi hiển thị
+
+            todoList.forEach(function (item, index) {
+                let li = document.createElement("li");
+                li.innerHTML = `${item.task} <span class="close" onclick="deleteTodo(${index})">&times;</span>`;
+
+                if (item.completed) {
+                    li.classList.add("checked");
+                }
+
+                li.onclick = function () {
+                    todoList[index].completed = !todoList[index].completed;
+                    renderTodo(); // Cập nhật lại danh sách
+                };
+
+                list.appendChild(li);
+            });
+        }
+
+        function addTodo() {
+            let input = document.getElementById("myInput");
+            todoList.push({ id: todoList.length + 1, task: task, completed: false });
+            input.value = ""; // Xóa nội dung ô input sau khi thêm
+            renderTodo();
+        }
+
+        function deleteTodo(index) {
+            todoList.splice(index, 1); // Xóa phần tử tại vị trí index
+            renderTodo();
+        }
+        renderTodo(); 
+    </script>
+</body>
+</html>
