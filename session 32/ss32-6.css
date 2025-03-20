@@ -1,0 +1,19 @@
+body {
+
+    text-align: center;
+}
+.btn {
+    font-size: 20px;
+    padding: 15px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+}
+.increase {
+    background-color: green;
+}
+.decrease {
+    background-color: red;
+}

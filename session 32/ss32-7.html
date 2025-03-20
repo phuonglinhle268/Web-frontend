@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ss32-7.css">
+</head>
+<body>
+    
+    <h1>Click vào ảnh để phóng to</h1>
+    <img id="before" src="https://tse3.mm.bing.net/th?id=OIP.AQLXdsCKteRN-noqJWCB7AHaFX&pid=Api&P=0&h=180">
+
+    <div id="after">
+        <img id="full">
+    </div>
+
+    <script>
+        let beforeImage = document.getElementById("before");
+        let overImage = document.getElementById("after");
+        let fullImage = document.getElementById("full");
+
+        beforeImage.onclick = function () {
+            fullImage.src = beforeImage.src;
+            overImage.style.display = "flex";
+        };
+
+        overImage.onclick = function () {
+            overImage.style.display = "none";
+        };
+    </script>
+</body>
+</html>

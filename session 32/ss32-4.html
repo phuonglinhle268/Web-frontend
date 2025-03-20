@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="email" placeholder="Nhập email">
+    <p id="result"></p>
+    <button id="btn">Check</button>
+
+    <script>
+        let check = document.getElementById("btn");
+        check.onclick = function(){
+            let email = document.getElementById("email").value;
+            let result = document.getElementById("result");
+
+            let a = email.indexOf("@") !== -1;
+            let ki_tu = email.slice(-4); 
+
+            if (a && (ki_tu === ".com" || ki_tu.slice(-3) === ".vn")) {
+                result.innerText = "Email hợp lệ!";
+                result.style.color = "green";
+            } else {
+                result.innerText = "Email không hợp lệ!";
+                result.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+</html>

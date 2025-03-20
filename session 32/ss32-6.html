@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ss32-6.css">
+
+</head>
+<body>
+    
+    <h2 id="text">Chữ sẽ thay đổi kích thước khi bấm nút</h2>
+    <button class="btn increase" onclick="change(1)">+</button>
+    <button class="btn decrease" onclick="change(-1)">-</button>
+
+    <script>
+        let fontSize = 20;
+        function change(amount) {
+            fontSize += amount;
+            document.getElementById("text").style.fontSize = fontSize + "px";
+        }
+    </script>
+</body>
+</html>

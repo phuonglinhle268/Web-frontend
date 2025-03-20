@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ss32-5.css">
+</head>
+<body>
+    <div class="container">
+        <h2>To-Do List K24_PTIT</h2>
+        <input type="text" id="task" placeholder="Nhập nhiệm vụ...">
+        <button class="add" onclick="addTask()">Thêm</button>
+        <ul id="list"></ul>
+    </div>
+
+    <script>
+        let tasks = [];
+
+        function renderList() {
+            let list = document.getElementById("list");
+            list.innerHTML = "";
+            tasks.forEach((task, index) => {
+                list.innerHTML += `<li>${task} <button class="delete" onclick="deleteTask(${index})">X</button></li>`;
+            });
+        }
+
+        function addTask() {
+            let input = document.getElementById("task");
+            let taskText = input.value;
+
+            let valid = false;
+            for (let i = 0; i < taskText.length; i++) {
+                if (taskText[i] !== " ") {
+                    valid = true;
+                    break;
+                }
+            }
+
+            if (!valid) {
+                alert("Vui lòng nhập nhiệm vụ hợp lệ!");
+                return;
+            }
+
+            tasks.push(taskText);
+            input.value = "";
+            renderList();
+        }
+
+        function deleteTask(index) {
+            let confirmDelete = confirm("Bạn có chắc chắn muốn xóa không?");
+            if (confirmDelete){
+                tasks.splice(index, 1);
+                renderList();
+            }
+        }
+    </script>
+
+</body>
+</html>

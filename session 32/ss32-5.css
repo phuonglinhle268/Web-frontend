@@ -1,0 +1,50 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 400px;
+    text-align: center;
+}
+
+input {
+    width: 70%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    padding:15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.add {
+    background-color: green;
+    color: white;
+}
+#list {
+    padding: 0;
+    margin-top: 10px;
+}
+#list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid grey;
+}
+.delete {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}

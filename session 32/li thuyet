@@ -1,0 +1,11 @@
+slice : cắt phần tử không làm thay đổi mảng gốc
+  // arr.slice(start, end); (ko bao gồm ptu ở vị trí end)
+  
+splice: thêm/xóa ptu (thay đổi mảng gốc)
+ //arr.splice(start, delete, item1, item2,...)
+ //arr.splice(1, 2): xóa ở vị trí
+ //arr.splice(2, 0, "c"): chèn c vào vị trí 2, ko xóa ptu nào
+ //arr.splice(1, 2, "a", "b"): thay a, b vào vị trí 1, 2
+
+ indexOf(): tìm vị trí xuất hiện theo chiều xuôi
+ lastIndexOf(): theo chiều ngược
