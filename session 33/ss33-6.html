@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #e3f2fd;
+        }
+        .weather-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(218, 214, 214, 0.5);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 text-center">
+        <h2 class="mb-4 text-primary">Ứng dụng Thời tiết</h2>
+        <div class="input-group mb-3">
+            <input type="text" id="city" class="form-control" placeholder="Nhập tên thành phố">
+            <button class="btn btn-primary" id="search">Search</button>
+        </div>
+        <div id="weather"></div>
+    </div>
+
+    <script>
+        const weatherData = {
+            "Hà Nội": { 
+                temperature: 25, 
+                humidity: 70, 
+                windSpeed: 5, 
+                description: "Có mây",
+                 icon: "☁️" 
+                },
+            "Hồ Chí Minh": { 
+                temperature: 32, 
+                humidity: 75, 
+                windSpeed: 7, 
+                description: "Nắng", 
+                icon: "☀" 
+            },
+            "Đà Nẵng": { 
+                temperature: 28, 
+                humidity: 82, 
+                windSpeed: 12, 
+                description: "Mưa rào", 
+                icon: "🌧️" 
+            },
+        };
+        
+        let search = document.getElementById("search");
+        search.onclick = function() {
+            const cityName = document.getElementById("city").value.trim(); //để loại bỏ khoảng trắng ở đầu và cuối chuỗi
+            const result = document.getElementById("weather");
+            
+            if (weatherData[cityName]) {
+                const weather = weatherData[cityName];
+                result.innerHTML = `
+                    <div class='weather-card mt-4'>
+                        <h3>${cityName}</h3>
+                        <h1>${weather.icon} ${weather.temperature}°C</h1>
+                        <p>${weather.description}</p>
+                        <p>Độ ẩm: ${weather.humidity}%</p>
+                        <p>Tốc độ gió: ${weather.windSpeed} km/h</p>
+                    </div>
+                `;
+            } else {
+                result.innerHTML = `<p class='text-danger mt-3'>Không tìm thấy thành phố!</p>`;
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

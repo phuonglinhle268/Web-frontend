@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="container">
+        <input type="password" id="password" placeholder="Enter your password">
+        <span id="icon"></span>
+    </div>
+
+    <script>
+        let input = document.getElementById("icon");
+        icon.onclick = function() {
+            let user = document.getElementById("password");
+            if (user.type === "password") {
+              user.type = "text";
+            } else {
+                user.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

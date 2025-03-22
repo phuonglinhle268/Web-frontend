@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea id="text"></textarea>
+    <p id="count">0 ký tự</p>
+    <button id="check">Kiểm tra</button>
+
+    <script>
+        let check = document.getElementById("check");
+        check.onclick = function(){
+            let text = document.getElementById("text").value;
+            let count = text.length;
+            document.getElementById("count").innerText = count + " ký tự";
+        }
+    </script>
+</body>
+</html>

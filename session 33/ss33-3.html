@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="select">
+        <option>-- Lựa chọn danh mục --</option>
+        <option>Đồ ăn</option>
+        <option>Nước</option>
+        <option>Dụng cụ</option>
+    </select>
+    <button id="check">Lọc</button>
+    <ul>
+        <li id="item1"><b>Tên đồ ăn:</b> Rau sạch - <b>Danh mục:</b> Đồ ăn</li>
+        <li id="item2"><b>Tên đồ ăn:</b> Thịt lợn - <b>Danh mục:</b> Đồ ăn</li>
+        <li id="item3"><b>Tên đồ ăn:</b> Pepsi không calo - <b>Danh mục:</b> Nước</li>
+        <li id="item4"><b>Tên đồ ăn:</b> Cocacola - <b>Danh mục:</b> Nước</li>
+        <li id="item5"><b>Tên đồ ăn:</b> Cờ lê - <b>Danh mục:</b> Dụng cụ</li>
+        <li id="item6"><b>Tên đồ ăn:</b> Tua vít - <b>Danh mục:</b> Dụng cụ</li>
+    </ul>
+    
+    <script>
+        let dish = [
+            { name: 'Rau sạch', category: 'Đồ ăn' },
+            { name: 'Thịt lợn', category: 'Đồ ăn' },
+            { name: 'Pepsi không calo', category: 'Nước' },
+            { name: 'Cocacola', category: 'Nước' },
+            { name: 'Cờ lê', category: 'Dụng cụ' },
+            { name: 'Tuy vít', category: 'Dụng cụ' }
+        ];
+        
+        let check = document.getElementById("check");
+        check.onclick = function() {
+            let category = document.getElementById("select").selectedOptions[0].text;
+            let items = [
+                document.getElementById("item1"),
+                document.getElementById("item2"),
+                document.getElementById("item3"),
+                document.getElementById("item4"),
+                document.getElementById("item5"),
+                document.getElementById("item6")
+            ];
+        
+            for (let i = 0; i < items.length; i++) {
+                if (category === "-- Lựa chọn danh mục --" || dish[i].category === category) {
+                    items[i].style.display = "list-item";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
