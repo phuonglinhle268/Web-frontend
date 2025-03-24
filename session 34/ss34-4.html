@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        input {
+            border-radius: 5px;
+            padding: 8px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .add-btn {
+            background: green;
+            color: white;
+        }
+        .delete-btn {
+            background: red;
+            color: white;
+            margin-left: 10px;
+        }
+        ul {
+            
+            padding: 0;
+        }
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>To-do List</h2>
+        <input type="text" id="text" placeholder="Thêm việc cần làm...">
+        <button class="add-btn" onclick="addTask()">Thêm</button>
+        <ul id="list"></ul>
+    </div>
+    
+    <script>
+        function loadTasks() {
+            let tasks = JSON.parse(localStorage.getItem("tasks")) || []; 
+            //nếu JSON(null, lỗi, undefined)->gtri mặc định rỗng  ->đảm bảo localStorage chưa có dữ liệu/lỗi,vẫn hợp lệ,
+            document.getElementById("list").innerHTML = tasks.map((task, index) //duyệt từng phần tử => 
+                `<li>${task} <button class='delete-btn' onclick='deleteTask(${index})'>Xóa</button></li>`).join(""); //nối mảng thành chuỗi
+        };
+
+        function addTask() {
+            let taskInput = document.getElementById("text");
+            let task = taskInput.value;
+            if (task === "") return;
+            let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            tasks.push(task);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            taskInput.value = "";
+            loadTasks();
+        }
+
+        function deleteTask(index) {
+            let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            tasks.splice(index, 1);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            loadTasks();
+        }
+        
+        loadTasks();
+    </script>
+</body>
+</html>
