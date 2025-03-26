@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ss35-2.css ">
+</head>
+<body>
+    <div class="container">
+        <button onclick="show()">ADD BOOKMARK</button>
+        <div id="bookmarks"></div>
+    </div>
+
+    <div class="modal" id="modal">
+        <h3>Add Bookmark</h3>
+        <input type="text" id="name" placeholder="Website Name">
+        <input type="text" id="url" placeholder="Website URL">
+        <button onclick="save()">Save<button>
+       
+    </div>
+
+    <script>
+        function show() {
+            document.getElementById("modal").style.display = "block";
+        }
+        function storage() {
+            let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+            let div = document.getElementById("bookmarks");
+            div.innerHTML = bookmarks.map((book, index) => `
+                <div class="bookmark">
+                    <a href="${book.url}" target="_blank">${book.name}</a>
+                    <button onclick="deleteBookmark(${index})">X</button>
+                </div>
+            `).join("");
+        }
+
+        function save() {
+            let name = document.getElementById("name").value;
+            let url = document.getElementById("url").value;
+            if (!name || !url) return alert("Vui lòng nhập đầy đủ thông tin");
+            let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+            bookmarks.push({ name, url });
+            localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+            storage();
+        }
+
+        function deleted(index) {
+            let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+            bookmarks.splice(index, 1);
+            localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+            storage();
+        }
+
+        storage();
+    </script>
+</body>
+</html>

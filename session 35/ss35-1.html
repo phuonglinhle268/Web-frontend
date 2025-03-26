@@ -1,0 +1,79 @@
+      
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>To-Do-List K24</h1>
+    <input type="text" placeholder="nhap cong viec" id="cv">
+    <button id="btn">Them</button>
+    <ul id="list">
+    </ul>
+    <script>
+        //b1: thiet ke kho luu tru du lieu
+let toDoList2 = [
+    {
+        id: 1,
+        content: "hello world",
+    },
+    {
+        id: 2,
+        content: "hello world 2",
+    },
+    {
+        id: 3,
+        content: "hello world 3",
+    }
+];
+// localStorage.setItem('todoList',JSON.stringify(todoList))
+
+
+
+let todoList = JSON.parse(localStorage.getItem('toDoList2')) || [];
+
+console.log("check 0",todoList);
+
+let ul = document.getElementById('list');
+let btn = document.getElementById("btn");
+let input = document.getElementById("cv");
+btn.onclick = function () {
+    let content = input.value;
+    console.log("CHECK 4", content);
+    if (content.length !== 0 && content !== null) {
+        // console.log(toDoList2.length[toDoList2.length -1].id);
+        let id = (toDoList2[toDoList2.length -1].id) +1;
+        console.log("hcheh",id);
+        
+        let newTask = {
+            id: id,
+            content: content,
+        };
+
+        console.log("check 5",newTask);
+        console.log("check 6",id);
+        
+        
+        toDoList2.push(newTask);
+        console.log("check 7",toDoList2);
+        localStorage.setItem("toDoList2", JSON.stringify(toDoList2));
+        input.value = "";
+        renderList();
+        console.log(input.value);
+    } else {
+        alert("nhập lại công việc");
+    }
+};
+function renderList() {
+    ul.innerHTML = ""; // Xóa danh sách cũ
+    for (let i in toDoList2) {
+        let li = `<li>${toDoList2[i].content}</li>`;
+        ul.innerHTML += li;
+    }
+}
+renderList()
+    </script>
+</body>
+</html>
