@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ss36-6.css">
+
+</head>
+
+<body>
+    <div class="product">
+        <h2>Sản phẩm: Tai nghe Bluetooth</h2>
+        <img src="https://imgs.search.brave.com/JRPdDRzOPxD2puv-eXZx8AiHMt7ySnUVRZs4uCbu7CI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTI5/NDk2NjY4Ni9waG90/by9iZWlqaW5nLWNo/aW5hLWFpcnBvZHMt/bWF4LWlzLXNlZW4t/YXQtYW4tYXBwbGUt/c3RvcmUtb24tamFu/dWFyeS0yLTIwMjEt/aW4tYmVpamluZy1j/aGluYS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9aXlyd0Np/TkJ6UW9jZzdUTHEt/LTNpNGM5dXpiTkda/NHprOW4tdUwwRWtk/Zz0"
+            alt="" />
+        <p>Đánh giá sản phẩm:</p>
+        <div id="rating">
+            <span class="stars" data-value="1">★</span>
+            <span class="stars" data-value="2">★</span>
+            <span class="stars" data-value="3">★</span>
+            <span class="stars" data-value="4">★</span>
+            <span class="stars" data-value="5">★</span>
+        </div>
+        <p id="selected-rating">Bạn chưa đánh giá.</p>
+
+        <!-- Bình luận -->
+        <div class="comment-section">
+            <h3>Bình luận</h3>
+            <textarea id="comment-input" class="comment-box" placeholder="Nhập bình luận..."></textarea>
+            <button onclick="submitReview()">Gửi</button>
+            <ul id="comment-list" class="comment-list">
+                <!-- sử dụng thẻ li và bên trong là thẻ span chứa sao và thẻ b chưa nội dung đánh giá -->
+                <!-- <li> <span>★★★★★<span> <b>Hay qué</b> </li> -->
+            </ul>
+        </div>
+    </div>
+    <script>
+        let selectedRating = 0;
+        let ratingText = document.getElementById("selected-rating");
+        let commentInput = document.getElementById("comment-input");
+        let commentList = document.getElementById("comment-list");
+
+        let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+        renderReviews();
+
+        let stars = document.getElementsByClassName("stars");
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].onclick = function () {
+                selectedRating = parseInt(this.getAttribute("data-value"));
+                //this: Đại diện cho phần tử HTML được nhấn vào (ngôi sao).
+                //.getAttribute("data-value"): Lấy giá trị của thuộc tính data-value từ phần tử đó.
+                ratingText.innerText = `Bạn đã đánh giá ${selectedRating} sao.`;
+
+                for (let j = 0; j < stars.length; j++) {
+                    stars[j].style.color = j < selectedRating ? "gold" : "gray";
+                }
+            };
+        }
+
+        function submitReview() {
+            let commentText = commentInput.value;
+            if (selectedRating === 0 || commentText === "") {
+                alert("Vui lòng chọn số sao và nhập nội dung đánh giá!");
+                return;
+            }
+
+            let review = {
+                rating: selectedRating,
+                comment: commentText
+            };
+
+            reviews.push(review);
+            localStorage.setItem("reviews", JSON.stringify(reviews));
+
+            renderReviews();
+            commentInput.value = "";
+        }
+
+        function renderReviews() {
+            commentList.innerHTML = "";
+            for (let i = 0; i < reviews.length; i++) {
+                let stars = "★".repeat(reviews[i].rating) + "☆".repeat(5 - reviews[i].rating);
+                let li = `<li><span>${stars}</span> <b>${reviews[i].comment}</b></li>`;
+                commentList.innerHTML += li;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ss36-5.css">
+</head>
+
+<body>
+    <h2>🗂️ Quản lý công việc (Task Board)</h2>
+
+    <div class="task-input">
+        <input type="text" id="taskName" placeholder="Nhập tên công việc..." />
+        <button>Thêm</button>
+    </div>
+
+    <div class="board">
+        <div class="column" id="pendingCol">
+            <h3>🕐 Chờ xử lý</h3>
+            <div id="pendingTasks">
+                <!-- <div class="task">
+            <p>Nội dung</p>
+            <button>Chuyển tiếp</button>
+          </div> -->
+            </div>
+        </div>
+        <div class="column" id="inProgressCol">
+            <h3>🔨 Đang làm</h3>
+            <div id="inProgressTasks"></div>
+        </div>
+        <div class="column" id="doneCol">
+            <h3>✅ Hoàn thành</h3>
+            <div id="doneTasks">
+                <!-- <div class="task">
+            <p>Nội dung</p>
+          </div> -->
+            </div>
+        </div>
+    </div>
+    <script>
+        let taskInput = document.getElementById("taskName");
+        let addButton = document.getElementsByTagName("button")[0];
+        let pendingTasks = document.getElementById("pendingTasks");
+        let inProgressTasks = document.getElementById("inProgressTasks");
+        let doneTasks = document.getElementById("doneTasks");
+
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+        function renderTasks() {
+            document.getElementById("pendingTasks").innerHTML = "";
+            document.getElementById("inProgressTasks").innerHTML = "";
+            document.getElementById("doneTasks").innerHTML = "";
+
+            for (let i = 0; i < tasks.length; i++) {
+                let taskHTML = "<div class='task'><p>" + tasks[i].name + "</p>";
+
+                if (tasks[i].status !== "done") {
+                    taskHTML += "<button onclick='updateStatus(" + i + ")'>Chuyển tiếp</button>";
+                }
+
+                taskHTML += "</div>";
+
+                if (tasks[i].status === "pending") {
+                    document.getElementById("pendingTasks").innerHTML += taskHTML;
+                } else if (tasks[i].status === "inProgress") {
+                    document.getElementById("inProgressTasks").innerHTML += taskHTML;
+                } else {
+                    document.getElementById("doneTasks").innerHTML += taskHTML;
+                }
+            }
+        }
+
+
+        function updateStatus(index) {
+            if (tasks[index].status === "pending") {
+                tasks[index].status = "inProgress";
+            } else if (tasks[index].status === "inProgress") {
+                tasks[index].status = "done";
+            }
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            renderTasks();
+        }
+
+        addButton.onclick = function () {
+            let taskName = taskInput.value;
+            if (taskName !== "") {
+                tasks.push({ name: taskName, status: "pending" });
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+                taskInput.value = "";
+                renderTasks();
+            }
+        };
+
+        renderTasks();
+
+    </script>
+</body>
+
+</html>

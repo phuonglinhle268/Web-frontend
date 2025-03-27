@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ss36-3.css">
+</head>
+<body>
+    <h1>Chọn màu nền bạn yêu thích</h1>
+    <div class="container">
+        <div class="box purple" onclick="changeColor(`purple`)"></div>
+        <div class="box blue"  onclick="changeColor(`blue`)"></div>
+        <div class="box red"  onclick="changeColor(`red`)"></div>
+        <div class="box yellow"  onclick="changeColor(`yellow`)"></div>
+    </div>
+    <p id="result">Trang sẽ ghi nhớ màu bạn đã chọn!</p>
+
+    <script>
+        let save = localStorage.getItem("bgColor");
+        if (save) {
+            document.body.style.backgroundColor = save;
+        }
+
+        function changeColor(color) {
+            document.body.style.backgroundColor = color;
+            localStorage.setItem("bgColor", color);
+        }
+    </script>
+</body>
+</html>

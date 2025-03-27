@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chào bạn!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./ss36-1.css">
+ 
+</head>
+<body>
+
+<div class="container">
+    <div id="input">
+        <h2>Nhập tên của bạn</h2>
+        <input type="text" id="name" class="form-control mb-3" placeholder="Nhập tên">
+        <button class="btn btn-primary" onclick="saveName()">Lưu</button>
+    </div>
+
+    <div id="change" style="display: none;">
+        <h2 id="greeting"></h2>
+        <button class="btn btn-primary" onclick="changeName()">Đổi tên</button>
+    </div>
+</div>
+
+<script>
+    let user = localStorage.getItem("userName");
+    if (user && user !== "") {
+        document.getElementById("greeting").innerHTML = "Chào bạn, " + user + "!";
+        document.getElementById("input").style.display = "none";
+        document.getElementById("change").style.display = "block";
+    }
+
+    function saveName() {
+        let name = document.getElementById("name").value;
+        if (name !== "") {
+            localStorage.setItem("userName", name);
+            document.getElementById("greeting").innerHTML = "Chào bạn, " + name + "!";
+            document.getElementById("input").style.display = "none";
+            document.getElementById("change").style.display = "block";
+        } else {
+            alert("Không được để trống");
+        }
+    }
+
+    function changeName() {
+        localStorage.removeItem("userName");
+        document.getElementById("input").style.display = "block";
+        document.getElementById("change").style.display = "none";
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
