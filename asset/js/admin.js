@@ -13,10 +13,19 @@ document.addEventListener("DOMContentLoaded", function () {
         return usersData ? JSON.parse(usersData) : [];
     }
 
-    // Hàm kiểm tra xem "Họ và tên" và "Email" có khớp với một user hay không
-    function isValidUser(name, email) {
+    // Hàm kiểm tra xem "Họ và tên" và "Email" có khớp với một user đã tồn tại hay không
+    function isValidUser(name, email, checkName, checkEmail) {
         const users = getAllUsers();
-        return users.some(user => user.name === name && user.email === email);
+        const user = users.find(user => user.email === email);
+        if (!user) {
+            checkEmail.innerHTML = "Email không tồn tại";
+            return false;
+        }
+        if (user.name !== name) {
+            checkName.innerHTML = "Họ và tên không khớp với email";
+            return false;
+        }
+        return true;
     }
 
     // Hàm lấy tất cả lịch tập từ localStorage (tổng hợp từ tất cả người dùng)
@@ -69,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Kiểm tra trùng lịch (kiểm tra trong lịch của người dùng tương ứng)
     function isDuplicateBooking(newBooking, excludeIndex = -1) {
-        const userStorageKey = `bookings_${newBooking.email}`;
+        const userStorageKey = `bookings_${newBooking.email}`; // Thêm dấu nháy ngược
         let bookings = JSON.parse(localStorage.getItem(userStorageKey)) || [];
         return bookings.some((booking, idx) =>
             idx !== excludeIndex &&
@@ -81,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hàm lưu dữ liệu vào localStorage (cập nhật hoặc thêm mới)
     function saveToLocalStorage(booking) {
-        const userStorageKey = `bookings_${booking.email}`;
+        const userStorageKey = `bookings_${booking.email}`; // Thêm dấu nháy ngược
         let bookings = JSON.parse(localStorage.getItem(userStorageKey)) || [];
 
         if (editingBookingRow) {
@@ -186,11 +195,9 @@ document.addEventListener("DOMContentLoaded", function () {
             isValid = false;
         }
     
-        // Validate User (Họ và tên và Email phải khớp với một user đã tồn tại)
-        if (nameValue !== "" && emailValue !== "") {
-            if (!isValidUser(nameValue, emailValue)) {
-                checkName.innerHTML = "Tên tài khoản hoặc email không tồn tại";
-                checkEmail.innerHTML = "Tên tài khoản hoặc email không tồn tại";
+        // Validate User (Họ và tên và Email phải khớp với một user đã đăng ký)
+        if (nameValue !== "" && emailValue !== "" && isValidEmail(emailValue)) {
+            if (!isValidUser(nameValue, emailValue, checkName, checkEmail)) {
                 isValid = false;
             }
         }
@@ -249,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }).then((result) => {
                 if (result.isConfirmed) {
                     const email = row.getAttribute("data-email");
-                    const userStorageKey = `bookings_${email}`;
+                    const userStorageKey = `bookings_${email}`; // Thêm dấu nháy ngược
                     let bookings = JSON.parse(localStorage.getItem(userStorageKey)) || [];
                     const index = row.getAttribute("data-index");
                     const allBookings = getAllBookings();
@@ -293,7 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Thêm: Xử lý đăng xuất
     function logout() {
         localStorage.removeItem("currentUser");
-        window.location.href = "project.html";
+        window.location.href = "login.html";
     }
 
     // Thêm: Hiển thị section tương ứng
@@ -312,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll('.sidebar a').forEach(link => {
             link.classList.remove('active');
         });
-        const activeLink = document.querySelector(`.sidebar a[id="${sectionId}Link"]`);
+        const activeLink = document.querySelector(`.sidebar a[id="${sectionId}Link"]`); // Thêm dấu nháy kép và đảm bảo template literal
         if (activeLink) {
             activeLink.classList.add('active');
         } else {
@@ -501,9 +508,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Hàm khởi tạo danh sách dịch vụ
+    // Hàm khởi tạo danh sách dịch vụ với 3 dịch vụ mặc định
     function initializeServices() {
-        const services = getAllServices();
+        let services = getAllServices();
+        // Nếu không có dữ liệu dịch vụ trong localStorage, khởi tạo 3 dịch vụ mặc định
+        if (services.length === 0) {
+            services = [
+                {
+                    name: "Gym",
+                    description: "Lớp tập Gym giúp tăng cường sức mạnh và thể lực",
+                    imageUrl: "https://example.com/gym.jpg"
+                },
+                {
+                    name: "Yoga",
+                    description: "Lớp tập Yoga giúp thư giãn và cải thiện sự linh hoạt",
+                    imageUrl: "https://example.com/yoga.jpg"
+                },
+                {
+                    name: "Zumba",
+                    description: "Lớp tập Zumba kết hợp âm nhạc và vũ đạo để đốt cháy calo",
+                    imageUrl: "https://example.com/zumba.jpg"
+                }
+            ];
+            saveAllServices(services);
+        }
         displayServices(services);
     }
 

@@ -113,7 +113,7 @@ body {
 
 .table-container th,
 .table-responsive th {
-  background-color: #f8f9fa;
+  background-color: #dad7d7;
   font-weight: bold;
 }
 /* Tùy chỉnh bảng trong phần Quản lý dịch vụ */
@@ -165,7 +165,7 @@ body {
 
 /* Đảm bảo tiêu đề bảng có nền sáng */
 .table thead th {
-  background-color: #f8f9fa; /* Nền sáng giống ảnh 2 */
+  background-color: #dad7d7; /* Nền sáng giống ảnh 2 */
   font-weight: bold;
   border: none;
 }
