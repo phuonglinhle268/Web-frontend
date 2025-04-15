@@ -56,10 +56,37 @@ function submitForm(event) {
     } else if (password.length < 8) {
         checkPassDiv.innerHTML = "Mật khẩu phải có ít nhất 8 ký tự";
         isValid = false;
-    // } else if (!isValidPasswordFormat(password)) {
+     } //else if (!isValidPasswordFormat(password)) {
     //     checkPassDiv.innerHTML = "Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường và kết thúc bằng số";
     //     isValid = false;
-    }
+    //}
+
+    //ko đc chứa kí tự đặc biệt
+    // else if (containsSpecialCharacters(password)) {
+    //     checkPassDiv.innerHTML = "Mật khẩu không được chứa ký tự đặc biệt";
+    //     isValid = false;
+
+    //chỉ toàn chữ/số
+    // else if (!isLettersOrNumbersOnly(password)) {
+    //     checkPassDiv.innerHTML = "Mật khẩu chỉ được chứa toàn chữ hoặc toàn số";
+    //     isValid = false;
+
+    //bắt đầu bằng chữ thường
+    // else if (!startsWithLowercase(password)) {
+    //     checkPassDiv.innerHTML = "Mật khẩu phải bắt đầu bằng chữ thường";
+    //     isValid = false;}
+
+    //bắt đầu bằng chữ in hoa
+    // else if (!startsWithUppercase(password)) {
+    //     checkPassDiv.innerHTML = "Mật khẩu phải bắt đầu bằng chữ in hoa";
+    //     isValid = false;
+    // }
+
+    //bắt đầu bằng chữ
+    // else if (!startsWithLetter(password)) {
+    //     checkPassDiv.innerHTML = "Mật khẩu phải bắt đầu bằng chữ cái";
+    //     isValid = false;
+    // }
 
     // Validate Confirm Password
     if (confirm === "") {
@@ -91,6 +118,15 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
+// Hàm kiểm tra mật khẩu có chứa ký tự đặc biệt hay không
+// function containsSpecialCharacters(password) {
+//     // Biểu thức chính quy kiểm tra:
+//     // - Chỉ cho phép chữ cái (a-z, A-Z) và số (0-9)
+//     // - Nếu có ký tự khác ngoài chữ cái và số, trả về true (tức là có ký tự đặc biệt)
+//     const specialCharRegex = /[^a-zA-Z0-9]/;
+//     return specialCharRegex.test(password);
+// }
+
 // // Hàm kiểm tra định dạng mật khẩu
 // function isValidPasswordFormat(password) {
 //     // Biểu thức chính quy kiểm tra:
@@ -99,6 +135,31 @@ function isValidEmail(email) {
 //     // - \d$ : kết thúc bằng số
 //     const passwordRegex = /^(?=\S*[A-Z])(?=\S*[a-z]).*\d$/;
 //     return passwordRegex.test(password);
+// }
+
+//mật khẩu chỉ chứa số/chữ
+// function isLettersOrNumbersOnly(password) {
+//     const onlyLettersRegex = /^[a-zA-Z]+$/;
+//     const onlyNumbersRegex = /^[0-9]+$/;
+//     return onlyLettersRegex.test(password) || onlyNumbersRegex.test(password);
+// }
+
+//Kiểm tra bắt đầu bằng chữ thường
+// function startsWithLowercase(password) {
+//     const lowercaseStartRegex = /^[a-z]/;
+//     return lowercaseStartRegex.test(password);
+// }
+
+// Hàm kiểm tra mật khẩu bắt đầu bằng chữ in hoa
+// function startsWithUppercase(password) {
+//     const uppercaseStartRegex = /^[A-Z]/;
+//     return uppercaseStartRegex.test(password);
+// }
+
+// Hàm kiểm tra mật khẩu bắt đầu bằng chữ cái (a-z hoặc A-Z)
+// function startsWithLetter(password) {
+//     const letterStartRegex = /^[a-zA-Z]/;
+//     return letterStartRegex.test(password);
 // }
 
 // Hàm kiểm tra email đã tồn tại

@@ -28,14 +28,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return true;
     }
 
-    // Hàm lấy tất cả lịch tập từ localStorage (tổng hợp từ tất cả người dùng)
-    function getAllBookings() {
+       // Hàm thu thập lịch tập
+       function getAllBookings() {
         const allBookings = [];
         for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
+            const key = localStorage.key(i); //key đại diện cho lịch tập 1 user
             if (key.startsWith("bookings_")) {
                 const bookings = JSON.parse(localStorage.getItem(key)) || [];
                 allBookings.push(...bookings);
+                //...: trải từng phần tử ra, lần lượt cho từng phần tử vào thay vì cho nguyên mảng
             }
         }
         return allBookings;
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         displayBookings(allBookings);
         updateChart();
         updateStats();
-        // Khởi tạo danh sách dịch vụ
+        // Khởi tạo danh sách dịch vụ (lấy từ localStorage)
         initializeServices();
     }
 
@@ -76,9 +77,81 @@ document.addEventListener("DOMContentLoaded", function () {
         updateStats();
     }
 
+    // // Hàm hiển thị danh sách lịch tập (nhóm theo user, sắp xếp theo tên lớp trong mỗi user)
+    // function displayBookings(bookings) {
+    //     // Sắp xếp danh sách bookings: nhóm theo email user, sau đó sắp xếp theo tên lớp trong mỗi user
+    //     const sortedBookings = [...bookings].sort((a, b) => {
+    //         // So sánh theo email user trước
+    //         const emailComparison = a.email.localeCompare(b.email, 'vi', { sensitivity: 'base' });
+    //         if (emailComparison !== 0) {
+    //             return emailComparison;
+    //         }
+    //         // Nếu email giống nhau, so sánh theo tên lớp học
+    //         return a.class.localeCompare(b.class, 'vi', { sensitivity: 'base' });
+    //     });
+
+    //     tableBody.innerHTML = "";
+    //     sortedBookings.forEach((booking, index) => {
+    //         const row = document.createElement("tr");
+    //         row.setAttribute("data-index", index);
+    //         row.setAttribute("data-email", booking.email);
+    //         row.innerHTML = `
+    //             <td>${booking.class}</td>
+    //             <td>${booking.date}</td>
+    //             <td>${booking.time}</td>
+    //             <td>${booking.name}</td>
+    //             <td>${booking.email}</td>
+    //             <td>
+    //                 <a href="#" class="text-primary edit-btn">Sửa</a>  
+    //                 <a href="#" class="text-danger delete-btn">Xóa</a>
+    //             </td>
+    //         `;
+    //         tableBody.appendChild(row);
+    //         addRowEventListeners(row);
+    //     });
+    //     updateChart();
+    //     updateStats();
+    // }
+
+    // // Hàm hiển thị danh sách lịch tập (sắp xếp theo tên lớp, sau đó theo tên user)
+    // function displayBookings(bookings) {
+    //     // Sắp xếp danh sách bookings trước khi hiển thị
+    //     const sortedBookings = [...bookings].sort((a, b) => {
+    //         // So sánh theo tên lớp học trước
+    //         const classComparison = a.class.localeCompare(b.class, 'vi', { sensitivity: 'base' });
+    //         if (classComparison !== 0) {
+    //             return classComparison;
+    //         }
+    //         // Nếu tên lớp giống nhau, so sánh theo tên user
+    //         return a.name.localeCompare(b.name, 'vi', { sensitivity: 'base' });
+    //     });
+
+    //     tableBody.innerHTML = "";
+    //     sortedBookings.forEach((booking, index) => {
+    //         const row = document.createElement("tr");
+    //         row.setAttribute("data-index", index);
+    //         row.setAttribute("data-email", booking.email);
+    //         row.innerHTML = `
+    //             <td>${booking.class}</td>
+    //             <td>${booking.date}</td>
+    //             <td>${booking.time}</td>
+    //             <td>${booking.name}</td>
+    //             <td>${booking.email}</td>
+    //             <td>
+    //                 <a href="#" class="text-primary edit-btn">Sửa</a>  
+    //                 <a href="#" class="text-danger delete-btn">Xóa</a>
+    //             </td>
+    //         `;
+    //         tableBody.appendChild(row);
+    //         addRowEventListeners(row);
+    //     });
+    //     updateChart();
+    //     updateStats();
+    // }
+
     // Kiểm tra trùng lịch (kiểm tra trong lịch của người dùng tương ứng)
     function isDuplicateBooking(newBooking, excludeIndex = -1) {
-        const userStorageKey = `bookings_${newBooking.email}`; // Thêm dấu nháy ngược
+        const userStorageKey = `bookings_${newBooking.email}`;
         let bookings = JSON.parse(localStorage.getItem(userStorageKey)) || [];
         return bookings.some((booking, idx) =>
             idx !== excludeIndex &&
@@ -88,9 +161,9 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 
-    // Hàm lưu dữ liệu vào localStorage (cập nhật hoặc thêm mới)
+    // Hàm lưu dữ liệu vào localStorage (cập nhật hoặc thêm mới, kiểm tra trùng lịch)
     function saveToLocalStorage(booking) {
-        const userStorageKey = `bookings_${booking.email}`; // Thêm dấu nháy ngược
+        const userStorageKey = `bookings_${booking.email}`;
         let bookings = JSON.parse(localStorage.getItem(userStorageKey)) || [];
 
         if (editingBookingRow) {
@@ -149,44 +222,38 @@ document.addEventListener("DOMContentLoaded", function () {
         const nameValue = document.getElementById("nameInput").value.trim();
         const emailValue = document.getElementById("emailInput").value.trim();
     
-        // Lấy các phần tử hiển thị lỗi
         const checkClass = document.getElementById("checkClass");
         const checkDate = document.getElementById("checkDate");
         const checkTime = document.getElementById("checkTime");
         const checkName = document.getElementById("checkName");
         const checkEmail = document.getElementById("checkEmail");
     
-        // Xóa thông báo lỗi cũ
+        //Xóa thông báo lỗi cũ
         clearErrorMessages();
     
-        // Kiểm tra và hiển thị lỗi
+        //Kiểm tra hiển thị lỗi
         let isValid = true;
     
-        // Validate Class
         if (classValue === "") {
             checkClass.innerHTML = "Lớp học không được để trống";
             isValid = false;
         }
     
-        // Validate Date
         if (dateValue === "") {
             checkDate.innerHTML = "Ngày tập không được để trống";
             isValid = false;
         }
     
-        // Validate Time
         if (timeValue === "") {
             checkTime.innerHTML = "Giờ không được để trống";
             isValid = false;
         }
     
-        // Validate Name
         if (nameValue === "") {
             checkName.innerHTML = "Họ và tên không được để trống";
             isValid = false;
         }
     
-        // Validate Email
         if (emailValue === "") {
             checkEmail.innerHTML = "Email không được để trống";
             isValid = false;
@@ -223,13 +290,13 @@ document.addEventListener("DOMContentLoaded", function () {
         editingBookingRow = null;
     });
 
-    // Hàm kiểm tra định dạng email
+    //Hàm kiểm tra định dạng email
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
 
-    // Hàm xóa thông báo lỗi cho Quản lý lịch
+    //Hàm xóa thông báo lỗi cho Quản lí Lịch
     function clearErrorMessages() {
         document.getElementById("checkClass").innerHTML = "";
         document.getElementById("checkDate").innerHTML = "";
@@ -238,7 +305,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("checkEmail").innerHTML = "";
     }
 
-    // Hàm thêm sự kiện cho từng dòng trong bảng
+    //Thêm sự kiện từng dòng trong bảng
     function addRowEventListeners(row) {
         const deleteBtn = row.querySelector(".delete-btn");
         const editBtn = row.querySelector(".edit-btn");
@@ -256,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }).then((result) => {
                 if (result.isConfirmed) {
                     const email = row.getAttribute("data-email");
-                    const userStorageKey = `bookings_${email}`; // Thêm dấu nháy ngược
+                    const userStorageKey = `bookings_${email}`;
                     let bookings = JSON.parse(localStorage.getItem(userStorageKey)) || [];
                     const index = row.getAttribute("data-index");
                     const allBookings = getAllBookings();
@@ -297,13 +364,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Thêm: Xử lý đăng xuất
+    //Xử lí đăng xuất
     function logout() {
         localStorage.removeItem("currentUser");
         window.location.href = "login.html";
     }
 
-    // Thêm: Hiển thị section tương ứng
+    //Hiển thị section tương ứng
     function showSection(sectionId) {
         document.querySelectorAll('.content').forEach(section => {
             section.style.display = 'none';
@@ -319,15 +386,24 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll('.sidebar a').forEach(link => {
             link.classList.remove('active');
         });
-        const activeLink = document.querySelector(`.sidebar a[id="${sectionId}Link"]`); // Thêm dấu nháy kép và đảm bảo template literal
+        const activeLink = document.querySelector(`.sidebar a[id="${sectionId}Link"]`);
         if (activeLink) {
             activeLink.classList.add('active');
         } else {
             console.error(`Link for section ${sectionId} not found`);
         }
+
+        // Cập nhật dữ liệu khi chuyển section
+        if (sectionId === 'home') {
+            displayHomeServices(); // Cập nhật trang chủ admin
+        } else if (sectionId === 'services') {
+            displayServices(getAllServices()); // Cập nhật Quản lý dịch vụ
+        } else if (sectionId === 'schedule') {
+            displayBookings(getAllBookings()); // Cập nhật Quản lý lịch
+        }
     }
 
-    // Thêm: Gắn sự kiện cho sidebar
+    //Gắn sự kiện cho sidebar
     const scheduleLink = document.getElementById('scheduleLink');
     const servicesLink = document.getElementById('servicesLink');
     const homeLink = document.getElementById('homeLink');
@@ -361,10 +437,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Thêm: Mặc định hiển thị section "Trang chủ" khi tải trang
     showSection('home');
 
-    // Thêm: Khởi tạo và cập nhật biểu đồ
+    //Khởi tạo và cập nhật biểu đồ
     const ctx = document.getElementById('myChart');
     let chartInstance = null;
 
@@ -418,7 +493,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Thêm: Cập nhật số liệu thống kê
+    //Tính số liệu thống kê
     function updateStats() {
         const allBookings = getAllBookings();
         const gymCount = allBookings.filter(booking => booking.class === "Gym").length;
@@ -429,8 +504,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const yogaStat = document.querySelector('.start-box:nth-child(2) strong');
         const zumbaStat = document.querySelector('.start-box:nth-child(3) strong');
 
+        //Kiểm tra ptu có tồn tại không
         if (gymStat && yogaStat && zumbaStat) {
-            gymStat.innerText = gymCount;
+            gymStat.innerText = gymCount;  //gán phần tử con start-box = số liệu Count
             yogaStat.innerText = yogaCount;
             zumbaStat.innerText = zumbaCount;
         } else {
@@ -438,7 +514,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Thêm: Hàm lọc danh sách lịch tập
+    //Hàm lọc danh sách lịch tập
     function filterBookings() {
         let allBookings = getAllBookings();
         
@@ -456,7 +532,7 @@ document.addEventListener("DOMContentLoaded", function () {
         displayBookings(filteredBookings);
     }
 
-    // Thêm: Gắn sự kiện cho các trường bộ lọc
+    //Gắn sự kiện cho các trường bộ lọc
     const filterClassSelect = document.getElementById('filterClassSelect');
     const emailFilter = document.getElementById('emailFilter');
     const dateFilter = document.getElementById('dateFilter');
@@ -475,18 +551,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Phần Quản lý dịch vụ
 
-    // Hàm lấy danh sách dịch vụ từ localStorage
+    // Hàm lấy danh sách dịch vụ từ localStorage (dùng chung với trang Home)
     function getAllServices() {
         const servicesData = localStorage.getItem("services");
         return servicesData ? JSON.parse(servicesData) : [];
     }
 
-    // Hàm lưu danh sách dịch vụ vào localStorage
+    // Hàm lưu danh sách dịch vụ vào localStorage (đồng bộ với trang Home)
     function saveAllServices(services) {
         localStorage.setItem("services", JSON.stringify(services));
+        // Cập nhật section "home" trong trang admin nếu đang hiển thị
+        const homeSection = document.getElementById('home');
+        if (homeSection && homeSection.style.display === 'block') {
+            displayHomeServices();
+        }
     }
 
-    // Hàm hiển thị danh sách dịch vụ
+    // Hàm hiển thị danh sách dịch vụ trong Quản lý dịch vụ
     function displayServices(services) {
         const tableBody = document.querySelector('#services table tbody');
         tableBody.innerHTML = "";
@@ -508,31 +589,33 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Hàm khởi tạo danh sách dịch vụ với 3 dịch vụ mặc định
+    // Hàm khởi tạo danh sách dịch vụ (lấy từ localStorage, không tạo dữ liệu mẫu)
     function initializeServices() {
-        let services = getAllServices();
-        // Nếu không có dữ liệu dịch vụ trong localStorage, khởi tạo 3 dịch vụ mặc định
-        if (services.length === 0) {
-            services = [
-                {
-                    name: "Gym",
-                    description: "Lớp tập Gym giúp tăng cường sức mạnh và thể lực",
-                    imageUrl: "https://example.com/gym.jpg"
-                },
-                {
-                    name: "Yoga",
-                    description: "Lớp tập Yoga giúp thư giãn và cải thiện sự linh hoạt",
-                    imageUrl: "https://example.com/yoga.jpg"
-                },
-                {
-                    name: "Zumba",
-                    description: "Lớp tập Zumba kết hợp âm nhạc và vũ đạo để đốt cháy calo",
-                    imageUrl: "https://example.com/zumba.jpg"
-                }
-            ];
-            saveAllServices(services);
-        }
+        const services = getAllServices();
         displayServices(services);
+    }
+
+    //Hàm hiển thị danh sách dịch vụ ở section "home" trong trang admin
+    function displayHomeServices() {
+        const services = getAllServices();
+        const homeServicesContainer = document.querySelector('#home .services-container');
+        if (homeServicesContainer) {
+            homeServicesContainer.innerHTML = "";
+            if (services.length === 0) {
+                homeServicesContainer.innerHTML = "<p>Chưa có dịch vụ nào.</p>";
+            } else {
+                services.forEach(service => {
+                    const serviceItem = document.createElement('div');
+                    serviceItem.classList.add('service-item');
+                    serviceItem.innerHTML = `
+                        <img src="${service.imageUrl}" alt="${service.name}" style="width: 200px; height: auto;">
+                        <h3>${service.name}</h3>
+                        <p>${service.description}</p>
+                    `;
+                    homeServicesContainer.appendChild(serviceItem);
+                });
+            }
+        }
     }
 
     // Hàm xóa thông báo lỗi cho Quản lý dịch vụ
@@ -570,6 +653,33 @@ document.addEventListener("DOMContentLoaded", function () {
             isValid = false;
         }
 
+        // if (!name) {
+        //     checkServiceName.innerHTML = "Tên dịch vụ không được để trống";
+        //     isValid = false;
+        // } else if (name.length < 3) {
+        //     checkServiceName.innerHTML = "Tên dịch vụ phải có ít nhất 3 ký tự";
+        //     isValid = false;
+        // } else if (editingRow ? isDuplicateServiceName(name, parseInt(editingRow.getAttribute("data-index"))) : isDuplicateServiceName(name)) {
+        //     checkServiceName.innerHTML = "Tên dịch vụ đã tồn tại";
+        //     isValid = false;
+        // }
+        // // Kiểm tra Mô tả
+        // if (!description) {
+        //     checkDes.innerHTML = "Mô tả dịch vụ không được để trống";
+        //     isValid = false;
+        // } else if (description.length < 10) {
+        //     checkDes.innerHTML = "Mô tả phải có ít nhất 10 ký tự";
+        //     isValid = false;
+        // }
+        // // Kiểm tra URL Hình ảnh
+        // if (!imageUrl) {
+        //     checkImg.innerHTML = "Link ảnh không được để trống";
+        //     isValid = false;
+        // } else if (!isValidImageUrl(imageUrl)) {
+        //     checkImg.innerHTML = "Link ảnh không hợp lệ (phải bắt đầu bằng http/https và có đuôi .jpg, .jpeg, .png, .gif)";
+        //     isValid = false;
+        // }
+
         if (!isValid) return;
 
         let services = getAllServices();
@@ -592,12 +702,13 @@ document.addEventListener("DOMContentLoaded", function () {
         editingServiceRow = null;
     }
 
-    // Gắn sự kiện cho nút "Lưu" trong modal Quản lý dịch vụ
+    //Gắn sự kiện cho nút Lưu
     const saveServiceButton = document.getElementById("saveServiceButton");
     if (saveServiceButton) {
         saveServiceButton.addEventListener("click", saveService);
     }
 
+    //Nút xóa, khi tìm thấy tr chứa nó, thực hiện lệnh
     function attachDeleteEvent(button) {
         button.addEventListener('click', function () {
             const row = button.closest('tr');
@@ -621,7 +732,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-
+    
+    //Nút sửa
     function attachEditEvent(button) {
         button.addEventListener('click', function () {
             editingServiceRow = button.closest('tr');
@@ -639,6 +751,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    //Nút thêm dịch vụ
     const addBtn = document.querySelector('[data-bs-target="#addServiceModal"]');
     if (addBtn) {
         addBtn.addEventListener('click', function () {
@@ -650,4 +763,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Khởi tạo dữ liệu khi tải trang
     initializeData();
+
+    // Lắng nghe sự kiện thay đổi localStorage (để đồng bộ thời gian thực)
+    window.addEventListener('storage', function (e) {
+        if (e.key === 'services') {
+            const homeSection = document.getElementById('home');
+            if (homeSection && homeSection.style.display === 'block') {
+                displayHomeServices();
+            }
+            const servicesSection = document.getElementById('services');
+            if (servicesSection && servicesSection.style.display === 'block') {
+                displayServices(getAllServices());
+            }
+        }
+    });
 });
